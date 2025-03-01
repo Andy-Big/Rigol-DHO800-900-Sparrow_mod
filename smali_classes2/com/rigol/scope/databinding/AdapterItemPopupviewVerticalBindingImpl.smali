@@ -4866,8 +4866,8 @@
 
 # change added
     # Inform: переключатель погашения иконок каналов в окне настроек канала
-    iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->hideSwitch:Lcom/rigol/scope/views/SwitchButton;
-    invoke-virtual {v0, v15}, Lcom/rigol/scope/views/SwitchButton;->setAlpha(F)V
+#    iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->hideSwitch:Lcom/rigol/scope/views/SwitchButton;
+#    invoke-virtual {v0, v15}, Lcom/rigol/scope/views/SwitchButton;->setAlpha(F)V
 # /change added
     .line 1175
     iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->mboundView10:Landroid/widget/TextView;
@@ -5094,6 +5094,25 @@
     iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->unitSpinner:Landroid/widget/TextView;
 
     invoke-virtual {v0, v6}, Landroid/widget/TextView;->setEnabled(Z)V
+
+# change added
+    # Inform: устанавливаем позицию переключателя погашения иконок каналов в окне настроек канала
+    # получаем канал из объекта VerticalParam
+    iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->mParam:Lcom/rigol/scope/data/VerticalParam;
+    invoke-virtual {v0}, Lcom/rigol/scope/data/VerticalParam;->getChan()Lcom/rigol/scope/cil/ServiceEnum$Chan;
+    move-result-object v4
+    # получаем флаг скрытия канала
+    sget-object v0, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
+    if-eqz v0, :cond_001
+    iget-object v0, v0, Lcom/rigol/scope/MainActivity;->axxxUtils:Lcom/rigol/axxx/axxxUtils;
+    if-eqz v0, :cond_001
+    invoke-virtual {v0, v4}, Lcom/rigol/axxx/axxxUtils;->getHideChannel(Lcom/rigol/scope/cil/ServiceEnum$Chan;)Z
+    move-result v4
+    # устанавливаем позицию переключателя погашения иконок каналов в окне настроек канала
+    iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->hideSwitch:Lcom/rigol/scope/views/SwitchButton;
+    invoke-static {v0, v4}, Landroidx/databinding/adapters/CompoundButtonBindingAdapter;->setChecked(Landroid/widget/CompoundButton;Z)V
+    :cond_001
+# /change added
 
     :cond_79
     const-wide v4, 0xa2000018L

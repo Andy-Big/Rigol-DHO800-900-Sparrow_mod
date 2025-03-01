@@ -220,7 +220,7 @@
     sget-object v0, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
     if-eqz v0, :cond_001
     iget-object v0, v0, Lcom/rigol/scope/MainActivity;->axxxUtils:Lcom/rigol/axxx/axxxUtils;
-    invoke-virtual {v0, v1, p2}, Lcom/rigol/axxx/axxxUtils;->swithShowChanIcon(Lcom/rigol/scope/data/VerticalParam;Z)V
+    invoke-virtual {v0, v1, p2}, Lcom/rigol/axxx/axxxUtils;->showChanIcon(Lcom/rigol/scope/data/VerticalParam;Z)V
 
     goto :goto_3
 

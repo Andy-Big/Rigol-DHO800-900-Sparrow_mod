@@ -1821,16 +1821,35 @@
     invoke-static {v6, v4}, Landroidx/databinding/adapters/ViewBindingAdapter;->setBackground(Landroid/view/View;Landroid/graphics/drawable/Drawable;)V
 
 # change added
+    # Inform: значение делителя пробника
+    iget-object v4, v1, Lcom/rigol/scope/databinding/AdapterItemVerticalBindingImpl;->probe_atten:Landroid/widget/TextView;
+    move/16 v6, v48
+    invoke-virtual {v4, v6}, Landroid/widget/TextView;->setTextColor(I)V
+    
     # Inform: скрытие или отображение иконок каналов в нижней панели SettingsBarFragment
     # Логируем
     const-string v4, "== AdapterItemVerticalBindingImpl -> setVisibility == chan: "
     iget-object v6, v1, Lcom/rigol/scope/databinding/AdapterItemVerticalBindingImpl;->mParam:Lcom/rigol/scope/data/VerticalParam;
     invoke-virtual {v6}, Lcom/rigol/scope/data/VerticalParam;->getTitle()Ljava/lang/String;
-    move-result-object v6
-    invoke-static {v4, v6}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;Ljava/lang/String;)V
+    move-result-object v8
+    invoke-static {v4, v8}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;Ljava/lang/String;)V
 
     # получаем флаг скрытия иконки канала
-    
+    sget-object v4, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
+    if-eqz v4, :cond_001
+    iget-object v4, v4, Lcom/rigol/scope/MainActivity;->axxxUtils:Lcom/rigol/axxx/axxxUtils;
+    if-eqz v4, :cond_001
+    # получаем канал
+    invoke-virtual {v6}, Lcom/rigol/scope/data/VerticalParam;->getChan()Lcom/rigol/scope/cil/ServiceEnum$Chan;
+    move-result-object v6
+    invoke-virtual {v4, v6}, Lcom/rigol/axxx/axxxUtils;->getHideChannel(Lcom/rigol/scope/cil/ServiceEnum$Chan;)Z
+    move-result v4
+    if-eqz v4, :cond_001
+    # если флаг скрытия иконки канала установлен, то изменяем значение visibility на GONE
+    const/16 v5, 0x8
+    const-string v4, "== AdapterItemVerticalBindingImpl -> setVisibility == hidden"
+    invoke-static {v4}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
+    :cond_001
 # /change added
 
     .line 533
@@ -1852,13 +1871,6 @@
     iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemVerticalBindingImpl;->title:Landroid/widget/TextView;
 
     invoke-virtual {v0, v14}, Landroid/widget/TextView;->setTextColor(I)V
-
-# change added
-# Inform: значение делителя пробника
-    iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemVerticalBindingImpl;->probe_atten:Landroid/widget/TextView;
-    move/16 v14, v48
-    invoke-virtual {v0, v14}, Landroid/widget/TextView;->setTextColor(I)V
-# /change added
 
     goto :goto_2d
 
@@ -1972,21 +1984,21 @@
 
 # change added
 # Inform: значение делителя пробника
-# save v1
+    # save v1
     move-object/16 v48, v1
-# build new string
+    # build new string
     new-instance v0, Ljava/lang/StringBuilder;
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-# add probe attenuate value string to new string 
+    # add probe attenuate value string to new string 
     move-object/16 v4, v50
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-# add 'x' symbol
+    # add 'x' symbol
     const-string v1, "x"
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-#convert to string
+    #convert to string
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
     move-result-object v4
-#restore v1
+    #restore v1
     move-object/from16 v1, v48
     iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemVerticalBindingImpl;->probe_atten:Landroid/widget/TextView;
     invoke-static {v0, v4}, Landroidx/databinding/adapters/TextViewBindingAdapter;->setText(Landroid/widget/TextView;Ljava/lang/CharSequence;)V

@@ -164,6 +164,7 @@
 #===============================================================================
 
 
+
 .method public getHideChannel(I)Z
     .locals 1
 
@@ -174,11 +175,39 @@
 .end method
 #===============================================================================
 
+.method public getHideChannel(Lcom/rigol/scope/cil/ServiceEnum$Chan;)Z
+    .locals 2
+
+    # получаем номер канала
+    iget v1, p1, Lcom/rigol/scope/cil/ServiceEnum$Chan;->value1:I
+    # получаем флаг сокрытия канала
+    iget-object v0, p0, Lcom/rigol/axxx/axxxUtils;->isHideChannels:[Z
+    aget-boolean v0, v0, v1
+
+    return v0
+.end method
+#===============================================================================
+
 .method public setHideChannel(IZ)V
     .locals 1
 
     iget-object v0, p0, Lcom/rigol/axxx/axxxUtils;->isHideChannels:[Z
     aput-boolean p2, v0, p1
+    invoke-virtual {p0}, Lcom/rigol/axxx/axxxUtils;->saveHideChannels()V
+
+    return-void
+.end method
+#===============================================================================
+
+.method public setHideChannel(Lcom/rigol/scope/cil/ServiceEnum$Chan;Z)V
+    .locals 2
+
+    # получаем номер канала
+    invoke-virtual {p1}, Lcom/rigol/scope/cil/ServiceEnum$Chan;->getValue1()I
+    move-result v1
+    # устанавливаем флаг сокрытия канала
+    iget-object v0, p0, Lcom/rigol/axxx/axxxUtils;->isHideChannels:[Z
+    aput-boolean p2, v0, v1
     invoke-virtual {p0}, Lcom/rigol/axxx/axxxUtils;->saveHideChannels()V
 
     return-void
@@ -235,6 +264,87 @@
 .end method
 #===============================================================================
 
+# переключение видимости иконоки канала
+.method public showChanIcon(Lcom/rigol/scope/data/VerticalParam;Z)V
+    .locals 6
+
+    # получаем номер канала из объекта VerticalParam
+    invoke-virtual {p1}, Lcom/rigol/scope/data/VerticalParam;->getChan()Lcom/rigol/scope/cil/ServiceEnum$Chan;
+    move-result-object v3
+    iget v3, v3, Lcom/rigol/scope/cil/ServiceEnum$Chan;->value1:I
+    # вычитаем 1, так как номера каналов начинаются с 1
+    add-int/lit8 v3, v3, -0x1
+
+    # логируем
+    const-string v0, "== axxxUtils -> showChanIcon == chan number: "
+    invoke-static {v0, v3}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;I)V
+
+    
+    # Получаем FragmentManager
+    invoke-virtual {p0}, Lcom/rigol/axxx/axxxUtils;->getFragmentSettingsBarBinding()Lcom/rigol/scope/databinding/FragmentSettingsBarBinding;
+    move-result-object v0
+    if-eqz v0, :cond_exit_err
+    # Получаем RecyclerView
+    iget-object v4, v0, Lcom/rigol/scope/databinding/FragmentSettingsBarBinding;->verticalList:Landroidx/recyclerview/widget/RecyclerView;
+    if-eqz v4, :cond_exit_err
+    # Получаем LayoutManager
+    invoke-virtual {v4}, Landroidx/recyclerview/widget/RecyclerView;->getLayoutManager()Landroidx/recyclerview/widget/RecyclerView$LayoutManager;
+    move-result-object v0
+    if-eqz v0, :cond_exit_err
+    # Находим View по позиции
+    invoke-virtual {v0, v3}, Landroidx/recyclerview/widget/RecyclerView$LayoutManager;->findViewByPosition(I)Landroid/view/View;
+    move-result-object v0
+    if-eqz v0, :cond_exit_err
+    add-int/lit8 v3, v3, 0x1
+
+    # получаем массив с флагами сокрытия каналов
+    iget-object v1, p0, Lcom/rigol/axxx/axxxUtils;->isHideChannels:[Z
+
+    # если флаг сокрытия канала в параметре p2 равен false, то отображаем элемент
+    if-nez p2, :cond_hide
+    const/4 v2, 0x0
+    aput-boolean v2, v1, v3
+
+    # отображаем канал
+    # логируем
+    const-string v2, "== axxxUtils -> showChanIcon == VISIBLE"
+    invoke-static {v2}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
+
+    const/4 v1, 0x0    # VISIBLE
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+    goto :goto_exit
+
+    # если флаг сокрытия канала равен true, то скрываем элемент
+    :cond_hide
+    const/4 v2, 0x1
+    aput-boolean v2, v1, v3
+    # устанавливаем статус канала в OFF
+    invoke-static {v3}, Lcom/rigol/axxx/axxxUtils;->getVerticalParamByNum(I)Lcom/rigol/scope/data/VerticalParam;
+    move-result-object v1
+    if-eqz v1, :cond_exit_err
+    sget-object v2, Lcom/rigol/scope/cil/ServiceEnum$enChanStatus;->CHAN_OFF:Lcom/rigol/scope/cil/ServiceEnum$enChanStatus;
+    invoke-virtual {v1, v2}, Lcom/rigol/scope/data/VerticalParam;->saveStatus(Lcom/rigol/scope/cil/ServiceEnum$enChanStatus;)V
+    # скрываем канал
+    # логируем
+    const-string v2, "== axxxUtils -> showChanIcon == GONE"
+    invoke-static {v2}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
+
+    const/16 v1, 0x8    # GONE
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    :goto_exit
+    # сохраняем массив с флагами сокрытия каналов
+    invoke-virtual {p0}, Lcom/rigol/axxx/axxxUtils;->saveHideChannels()V
+    return-void
+
+    :cond_exit_err
+    const-string v0, "== axxxUtils -> showChanIcon == error"
+    invoke-static {v0}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
+    return-void
+
+.end method
+#===============================================================================
+
 
 
 
@@ -278,89 +388,8 @@
 
 
 
-# переключение видимости иконоки канала
-.method public swithShowChanIcon(Lcom/rigol/scope/data/VerticalParam;Z)V
-    .locals 6
-
-    # получаем номер канала из объекта VerticalParam
-    invoke-virtual {p1}, Lcom/rigol/scope/data/VerticalParam;->getChan()Lcom/rigol/scope/cil/ServiceEnum$Chan;
-    move-result-object v3
-    iget v3, v3, Lcom/rigol/scope/cil/ServiceEnum$Chan;->value1:I
-    # вычитаем 1, так как номера каналов начинаются с 1
-    add-int/lit8 v3, v3, -0x1
-
-    # логируем
-    const-string v0, "== axxxUtils -> swithShowChanIcon == chan number: "
-    invoke-static {v0, v3}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;I)V
-
-    
-    # Получаем FragmentManager
-    invoke-virtual {p0}, Lcom/rigol/axxx/axxxUtils;->getFragmentSettingsBarBinding()Lcom/rigol/scope/databinding/FragmentSettingsBarBinding;
-    move-result-object v0
-    if-eqz v0, :cond_exit_err
-    # Получаем RecyclerView
-    iget-object v4, v0, Lcom/rigol/scope/databinding/FragmentSettingsBarBinding;->verticalList:Landroidx/recyclerview/widget/RecyclerView;
-    if-eqz v4, :cond_exit_err
-    # Получаем LayoutManager
-    invoke-virtual {v4}, Landroidx/recyclerview/widget/RecyclerView;->getLayoutManager()Landroidx/recyclerview/widget/RecyclerView$LayoutManager;
-    move-result-object v0
-    if-eqz v0, :cond_exit_err
-    # Находим View по позиции
-    invoke-virtual {v0, v3}, Landroidx/recyclerview/widget/RecyclerView$LayoutManager;->findViewByPosition(I)Landroid/view/View;
-    move-result-object v0
-    if-eqz v0, :cond_exit_err
-    add-int/lit8 v3, v3, 0x1
-
-    # получаем массив с флагами сокрытия каналов
-    iget-object v1, p0, Lcom/rigol/axxx/axxxUtils;->isHideChannels:[Z
-
-    # если флаг сокрытия канала в параметре p2 равен false, то отображаем элемент
-    if-nez p2, :cond_hide
-    const/4 v2, 0x0
-    aput-boolean v2, v1, v3
-
-    # отображаем канал
-    # логируем
-    const-string v2, "== axxxUtils -> swithShowChanIcon == VISIBLE"
-    invoke-static {v2}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
-
-    const/4 v1, 0x0    # VISIBLE
-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
-    goto :goto_exit
-
-    # если флаг сокрытия канала равен true, то скрываем элемент
-    :cond_hide
-    const/4 v2, 0x1
-    aput-boolean v2, v1, v3
-    # устанавливаем статус канала в OFF
-    invoke-static {v3}, Lcom/rigol/axxx/axxxUtils;->axxxGetVerticalParamByNum(I)Lcom/rigol/scope/data/VerticalParam;
-    move-result-object v1
-    if-eqz v1, :cond_exit_err
-    sget-object v2, Lcom/rigol/scope/cil/ServiceEnum$enChanStatus;->CHAN_OFF:Lcom/rigol/scope/cil/ServiceEnum$enChanStatus;
-    invoke-virtual {v1, v2}, Lcom/rigol/scope/data/VerticalParam;->saveStatus(Lcom/rigol/scope/cil/ServiceEnum$enChanStatus;)V
-    # скрываем канал
-    # логируем
-    const-string v2, "== axxxUtils -> swithShowChanIcon == GONE"
-    invoke-static {v2}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
-
-    const/16 v1, 0x8    # GONE
-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
-
-    :goto_exit
-    # сохраняем массив с флагами сокрытия каналов
-    invoke-virtual {p0}, Lcom/rigol/axxx/axxxUtils;->saveHideChannels()V
-    return-void
-
-    :cond_exit_err
-    const-string v0, "== axxxUtils -> swithShowChanIcon == error"
-    invoke-static {v0}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
-    return-void
-
-.end method
-#===============================================================================
-
 # возвращает указатель на VerticalParam по номеру канала
-.method public static axxxGetVerticalParamByNum(I)Lcom/rigol/scope/data/VerticalParam;
+.method public static getVerticalParamByNum(I)Lcom/rigol/scope/data/VerticalParam;
     .locals 4
 
     # проверяем, если номер канала меньше 1, то возвращаем null
@@ -411,11 +440,11 @@
 #===============================================================================
 
 # возвращает указатель на ServiceEnum$Chan; по номеру канала
-.method public static axxxGetChanByNum(I)Lcom/rigol/scope/cil/ServiceEnum$Chan;
+.method public static getAppVersionNameetChanByNum(I)Lcom/rigol/scope/cil/ServiceEnum$Chan;
     .locals 4
 
     # получаем объект VerticalParam по номеру канала
-    invoke-static {p0}, Lcom/rigol/axxx/axxxUtils;->axxxGetVerticalParamByNum(I)Lcom/rigol/scope/data/VerticalParam;
+    invoke-static {p0}, Lcom/rigol/axxx/axxxUtils;->getVerticalParamByNum(I)Lcom/rigol/scope/data/VerticalParam;
     move-result-object v0
 
     # проверяем, если объект VerticalParam не равен null, то возвращаем указатель на ServiceEnum$Chan
@@ -433,7 +462,7 @@
 #===============================================================================
 
 # возвращает указатель на HorizontalParam
-.method public static axxxGetHorizontalParam()Lcom/rigol/scope/data/HorizontalParam;
+.method public static getHorizontalParam()Lcom/rigol/scope/data/HorizontalParam;
     .locals 4
 
     # получаем указатель на HorizontalViewModel
