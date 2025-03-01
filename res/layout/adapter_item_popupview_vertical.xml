@@ -337,19 +337,6 @@
 <!-- change added -->
 <!-- Inform: переключатель погашения иконок каналов в окне настроек канала -->
 
-        <TextView
-          android:layout_marginTop="4.0dip"
-          android:text="@string/msg_chan_hide"
-          app:layout_constraintEnd_toEndOf="@id/vertical_hide_switch"
-          app:layout_constraintStart_toStartOf="@id/vertical_hide_switch"
-          app:layout_constraintTop_toBottomOf="@id/vertical_hide_switch"
-          style="@style/App.Text"
-          android:visibility="visible"
-        />
-        <!--
-          android:tag="binding_43"
-        -->
-
         <com.rigol.scope.views.SwitchButton android:id="@id/vertical_hide_switch"
           android:tag="binding_43"
           app:layout_constraintEnd_toEndOf="@id/delay_edit_text"
@@ -360,6 +347,19 @@
         />
         <!--
           android:tag="binding_44"
+        -->
+
+        <TextView android:id="@id/vertical_hide_switch_label"
+          android:layout_marginTop="4.0dip"
+          android:tag="binding_44"
+          android:text="@string/msg_chan_hide"
+          app:layout_constraintStart_toStartOf="@id/vertical_hide_switch"
+          app:layout_constraintTop_toBottomOf="@id/vertical_hide_switch"
+          style="@style/App.Text"
+          android:visibility="visible"
+        />
+        <!--
+          app:layout_constraintEnd_toEndOf="@id/vertical_hide_switch"
         -->
 <!-- /change added -->
 

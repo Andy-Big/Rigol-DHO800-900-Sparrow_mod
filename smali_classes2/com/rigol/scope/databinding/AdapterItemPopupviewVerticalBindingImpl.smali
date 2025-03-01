@@ -109,7 +109,7 @@
 
 # change changed
     #const/16 v2, 0x2b   # original
-    const/16 v2, 0x2c
+    const/16 v2, 0x2d
 # /change changed
 
     .line 17
@@ -122,7 +122,7 @@
 
 # change changed
     #const/16 v2, 0x2c   # original
-    const/16 v2, 0x2d
+    const/16 v2, 0x2e
 # /change changed
 
     invoke-virtual {v0, v1, v2}, Landroid/util/SparseIntArray;->put(II)V
@@ -140,7 +140,7 @@
 
 # change changed
     #const/16 v2, 0x2d   # original
-    const/16 v2, 0x2e
+    const/16 v2, 0x2f
 # /change changed
 
     invoke-static {p1, p2, v2, v0, v1}, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->mapBindings(Landroidx/databinding/DataBindingComponent;Landroid/view/View;ILandroidx/databinding/ViewDataBinding$IncludedLayouts;Landroid/util/SparseIntArray;)[Ljava/lang/Object;
@@ -157,7 +157,7 @@
 #.method private constructor <init>(Landroidx/databinding/DataBindingComponent;Landroid/view/View;[Ljava/lang/Object;)V     # original
 #    .locals 37     # original
 .method private constructor <init>(Landroidx/databinding/DataBindingComponent;Landroid/view/View;[Ljava/lang/Object;)V
-    .locals 39
+    .locals 40
 # /change changed
 
     move-object/from16 v3, p0
@@ -201,7 +201,7 @@
 
 # change changed
     #const/16 v9, 0x2b   # original
-    const/16 v9, 0x2c
+    const/16 v9, 0x2d
 # /change changed
     aget-object v9, p3, v9
 
@@ -209,7 +209,7 @@
 
 # change changed
     #const/16 v10, 0x2c   # original
-    const/16 v10, 0x2d
+    const/16 v10, 0x2e
 # /change changed
     aget-object v10, p3, v10
 
@@ -374,19 +374,22 @@
     check-cast v35, Landroid/widget/TextView;
 
 # change added
-# Inform: переключатель погашения иконок каналов в окне настроек канала
+    # Inform: переключатель погашения иконок каналов в окне настроек канала
     const/16 v3, 0x2b
     aget-object v36, p3, v3
     check-cast v36, Lcom/rigol/scope/views/SwitchButton;
+    const/16 v3, 0x2c
+    aget-object v37, p3, v3
+    check-cast v37, Landroid/widget/TextView;
 # /change added
 
-    const/16 v37, 0x6
+    const/16 v38, 0x6
 # change changed
     #move/from16 v3, v36     # original
 
     #invoke-direct/range {v0 .. v35}, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBinding;-><init>(Ljava/lang/Object;Landroid/view/View;ILandroid/widget/Button;Landroid/widget/Button;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/EditText;Landroid/widget/ImageView;Landroid/widget/TextView;Lcom/rigol/scope/views/SwitchButton;Lcom/rigol/scope/views/SwitchButton;Landroid/widget/Button;Landroid/widget/TextView;Lcom/rigol/scope/views/SwitchButton;Lcom/rigol/scope/views/SwitchButton;Landroid/widget/ImageView;Landroid/widget/ImageView;Landroid/widget/ImageView;Landroid/widget/ImageView;Lcom/rigol/scope/views/baseview/BaseEditText;Lcom/rigol/scope/views/SwitchButton;Landroid/widget/Button;Landroid/widget/EditText;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/EditText;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/Button;Landroid/widget/EditText;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/Button;Landroid/widget/TextView;)V  # original
-    move/from16 v3, v37
-    invoke-direct/range {v0 .. v36}, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBinding;-><init>(Ljava/lang/Object;Landroid/view/View;ILandroid/widget/Button;Landroid/widget/Button;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/EditText;Landroid/widget/ImageView;Landroid/widget/TextView;Lcom/rigol/scope/views/SwitchButton;Lcom/rigol/scope/views/SwitchButton;Landroid/widget/Button;Landroid/widget/TextView;Lcom/rigol/scope/views/SwitchButton;Lcom/rigol/scope/views/SwitchButton;Landroid/widget/ImageView;Landroid/widget/ImageView;Landroid/widget/ImageView;Landroid/widget/ImageView;Lcom/rigol/scope/views/baseview/BaseEditText;Lcom/rigol/scope/views/SwitchButton;Landroid/widget/Button;Landroid/widget/EditText;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/EditText;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/Button;Landroid/widget/EditText;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/Button;Landroid/widget/TextView;Lcom/rigol/scope/views/SwitchButton;)V
+    move/from16 v3, v38
+    invoke-direct/range {v0 .. v37}, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBinding;-><init>(Ljava/lang/Object;Landroid/view/View;ILandroid/widget/Button;Landroid/widget/Button;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/EditText;Landroid/widget/ImageView;Landroid/widget/TextView;Lcom/rigol/scope/views/SwitchButton;Lcom/rigol/scope/views/SwitchButton;Landroid/widget/Button;Landroid/widget/TextView;Lcom/rigol/scope/views/SwitchButton;Lcom/rigol/scope/views/SwitchButton;Landroid/widget/ImageView;Landroid/widget/ImageView;Landroid/widget/ImageView;Landroid/widget/ImageView;Lcom/rigol/scope/views/baseview/BaseEditText;Lcom/rigol/scope/views/SwitchButton;Landroid/widget/Button;Landroid/widget/EditText;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/EditText;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/Button;Landroid/widget/EditText;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/Button;Landroid/widget/TextView;Lcom/rigol/scope/views/SwitchButton;Landroid/widget/TextView;)V
 # /change changed
 
     const-wide/16 v0, -0x1
@@ -487,6 +490,8 @@
 # change added
     iget-object v0, v2, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->hideSwitch:Lcom/rigol/scope/views/SwitchButton;
     invoke-virtual {v0, v1}, Lcom/rigol/scope/views/SwitchButton;->setTag(Ljava/lang/Object;)V
+    iget-object v0, v2, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->hideSwitchLabel:Landroid/widget/TextView;
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTag(Ljava/lang/Object;)V
 # /change added
 
 
@@ -4864,11 +4869,6 @@
 
     invoke-virtual {v0, v15}, Lcom/rigol/scope/views/SwitchButton;->setAlpha(F)V
 
-# change added
-    # Inform: переключатель погашения иконок каналов в окне настроек канала
-#    iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->hideSwitch:Lcom/rigol/scope/views/SwitchButton;
-#    invoke-virtual {v0, v15}, Lcom/rigol/scope/views/SwitchButton;->setAlpha(F)V
-# /change added
     .line 1175
     iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->mboundView10:Landroid/widget/TextView;
 
@@ -5096,22 +5096,45 @@
     invoke-virtual {v0, v6}, Landroid/widget/TextView;->setEnabled(Z)V
 
 # change added
-    # Inform: устанавливаем позицию переключателя погашения иконок каналов в окне настроек канала
+    # Inform: устанавливаем позицию переключателя погашения иконок каналов в окне настроек канала или отключаем этот переключатель для каналов 1 и 2
     # получаем канал из объекта VerticalParam
     iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->mParam:Lcom/rigol/scope/data/VerticalParam;
     invoke-virtual {v0}, Lcom/rigol/scope/data/VerticalParam;->getChan()Lcom/rigol/scope/cil/ServiceEnum$Chan;
     move-result-object v4
+    # проверяем, что это не канал 1 и 2
+    iget v6, v4, Lcom/rigol/scope/cil/ServiceEnum$Chan;->value1:I
+    const/4 v0, 0x1
+    if-eq v6, v0, :cond_disable_hide_switch
+    const/4 v0, 0x2
+    if-ne v6, v0, :cond_001
+    # если это канал 1 или 2, то отключаем переключатель погашения иконок каналов
+    :cond_disable_hide_switch
+    iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->hideSwitch:Lcom/rigol/scope/views/SwitchButton;
+    # отключаем переключатель
+    const/4 v6, 0x0
+    invoke-virtual {v0, v6}, Landroid/widget/TextView;->setEnabled(Z)V
+    # выставляем ему и тексту прозрачность
+    const/16 v6, 0x0
+    invoke-static/range {v6 .. v6}, Lcom/rigol/scope/utilities/ContextUtil;->getAlpha(Z)F
+    move-result v6
+    invoke-virtual {v0, v6}, Landroid/widget/TextView;->setAlpha(F)V
+    iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->hideSwitchLabel:Landroid/widget/TextView;
+    invoke-virtual {v0, v6}, Landroid/widget/TextView;->setAlpha(F)V
+    goto :cond_continue
+
+    # это не канал 1 или 2, устанавливаем положение переключателя погашения иконок каналов
+    :cond_001
     # получаем флаг скрытия канала
     sget-object v0, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
-    if-eqz v0, :cond_001
+    if-eqz v0, :cond_continue
     iget-object v0, v0, Lcom/rigol/scope/MainActivity;->axxxUtils:Lcom/rigol/axxx/axxxUtils;
-    if-eqz v0, :cond_001
+    if-eqz v0, :cond_continue
     invoke-virtual {v0, v4}, Lcom/rigol/axxx/axxxUtils;->getHideChannel(Lcom/rigol/scope/cil/ServiceEnum$Chan;)Z
     move-result v4
     # устанавливаем позицию переключателя погашения иконок каналов в окне настроек канала
     iget-object v0, v1, Lcom/rigol/scope/databinding/AdapterItemPopupviewVerticalBindingImpl;->hideSwitch:Lcom/rigol/scope/views/SwitchButton;
     invoke-static {v0, v4}, Landroidx/databinding/adapters/CompoundButtonBindingAdapter;->setChecked(Landroid/widget/CompoundButton;Z)V
-    :cond_001
+    :cond_continue
 # /change added
 
     :cond_79

@@ -203,8 +203,7 @@
     .locals 2
 
     # получаем номер канала
-    invoke-virtual {p1}, Lcom/rigol/scope/cil/ServiceEnum$Chan;->getValue1()I
-    move-result v1
+    iget v1, p1, Lcom/rigol/scope/cil/ServiceEnum$Chan;->value1:I
     # устанавливаем флаг сокрытия канала
     iget-object v0, p0, Lcom/rigol/axxx/axxxUtils;->isHideChannels:[Z
     aput-boolean p2, v0, v1

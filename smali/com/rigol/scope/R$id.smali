@@ -5978,6 +5978,7 @@
 .field public static final fsb_v4_coup_icon:I = 0x7f0a101c
 
 .field public static final vertical_hide_switch:I = 0x7f0a1018
+.field public static final vertical_hide_switch_label:I = 0x7f0a101d
 
 .field public static final window_title_info:I = 0x7f0a1010
 
