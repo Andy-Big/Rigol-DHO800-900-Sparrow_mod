@@ -67,6 +67,7 @@
     invoke-direct {p0}, Landroidx/fragment/app/Fragment;-><init>()V
     return-void
 .end method
+#===============================================================================
 
 
 .method public onCreate(Landroid/os/Bundle;)V
@@ -229,6 +230,7 @@
 
     return-void
 .end method
+#===============================================================================
 
 
 .method public onCreateView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;
@@ -315,11 +317,26 @@
 
     # Find TextView fsb_v1_title
     .line 610
+    # получаем флаг скрытия иконки канала
+    sget-object v0, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
+    if-eqz v0, :cond_ex_1_1
+    iget-object v0, v0, Lcom/rigol/scope/MainActivity;->axxxUtils:Lcom/rigol/axxx/axxxUtils;
+    if-eqz v0, :cond_ex_1_1
+    const/4 v1, 0x1
+    invoke-virtual {v0, v1}, Lcom/rigol/axxx/axxxUtils;->getHideChannel(I)Z
+    move-result v2
+    if-eqz v2, :cond_ex_1_1
+    const/16 v2, 0x8
+    goto :cond_ex_1_2
+    :cond_ex_1_1
+    const/4 v2, 0x0
+    :cond_ex_1_2
     sget v0, Lcom/rigol/scope/R$id;->fsb_v1_title:I
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
     move-result-object v0
     check-cast v0, Landroid/widget/TextView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v1_title:Landroid/widget/TextView;
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
 
     # Find TextView fsb_v1_coup_icon
     .line 615
@@ -328,6 +345,7 @@
     move-result-object v0
     check-cast v0, Landroid/widget/ImageView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v1_coup_icon:Landroid/widget/ImageView;
+    invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setVisibility(I)V
 
     # Find TextView fsb_v1_value
     .line 620
@@ -336,6 +354,8 @@
     move-result-object v0
     check-cast v0, Landroid/widget/TextView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v1_value:Landroid/widget/TextView;
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
+
     # Добавляем слушатель кликов
     .line 630
     new-instance v1, Lcom/rigol/scope/myfragment/FullscreenBarFragment$CommonClickListener;
@@ -345,14 +365,29 @@
     .line 640
     invoke-direct {p0, v0}, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->setupTextViewTouchDelegate(Landroid/widget/TextView;)V
 
+    
     # Find TextView fsb_v2_title
     .line 650
+    # получаем флаг скрытия иконки канала
+    sget-object v0, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
+    if-eqz v0, :cond_ex_2_1
+    iget-object v0, v0, Lcom/rigol/scope/MainActivity;->axxxUtils:Lcom/rigol/axxx/axxxUtils;
+    if-eqz v0, :cond_ex_2_1
+    const/4 v1, 0x2
+    invoke-virtual {v0, v1}, Lcom/rigol/axxx/axxxUtils;->getHideChannel(I)Z
+    move-result v2
+    if-eqz v2, :cond_ex_2_1
+    const/16 v2, 0x8
+    goto :cond_ex_2_2
+    :cond_ex_2_1
+    const/4 v2, 0x0
+    :cond_ex_2_2
     sget v0, Lcom/rigol/scope/R$id;->fsb_v2_title:I
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
     move-result-object v0
     check-cast v0, Landroid/widget/TextView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v2_title:Landroid/widget/TextView;
-
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
     # Find TextView fsb_v2_coup_icon
     .line 655
     sget v0, Lcom/rigol/scope/R$id;->fsb_v2_coup_icon:I
@@ -360,6 +395,7 @@
     move-result-object v0
     check-cast v0, Landroid/widget/ImageView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v2_coup_icon:Landroid/widget/ImageView;
+    invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setVisibility(I)V
 
     # Find TextView fsb_v2_value
     .line 660
@@ -368,6 +404,8 @@
     move-result-object v0
     check-cast v0, Landroid/widget/TextView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v2_value:Landroid/widget/TextView;
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
+
     # Добавляем слушатель кликов
     .line 670
     new-instance v1, Lcom/rigol/scope/myfragment/FullscreenBarFragment$CommonClickListener;
@@ -377,13 +415,29 @@
     .line 680
     invoke-direct {p0, v0}, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->setupTextViewTouchDelegate(Landroid/widget/TextView;)V
 
+    
     # Find TextView fsb_v3_title
     .line 690
+    # получаем флаг скрытия иконки канала
+    sget-object v0, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
+    if-eqz v0, :cond_ex_3_1
+    iget-object v0, v0, Lcom/rigol/scope/MainActivity;->axxxUtils:Lcom/rigol/axxx/axxxUtils;
+    if-eqz v0, :cond_ex_3_1
+    const/4 v1, 0x3
+    invoke-virtual {v0, v1}, Lcom/rigol/axxx/axxxUtils;->getHideChannel(I)Z
+    move-result v2
+    if-eqz v2, :cond_ex_3_1
+    const/16 v2, 0x8
+    goto :cond_ex_3_2
+    :cond_ex_3_1
+    const/4 v2, 0x0
+    :cond_ex_3_2
     sget v0, Lcom/rigol/scope/R$id;->fsb_v3_title:I
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
     move-result-object v0
     check-cast v0, Landroid/widget/TextView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v3_title:Landroid/widget/TextView;
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
 
     # Find TextView fsb_v3_coup_icon
     .line 705
@@ -392,6 +446,7 @@
     move-result-object v0
     check-cast v0, Landroid/widget/ImageView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v3_coup_icon:Landroid/widget/ImageView;
+    invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setVisibility(I)V
 
     # Find TextView fsb_v3_value
     .line 700
@@ -400,6 +455,8 @@
     move-result-object v0
     check-cast v0, Landroid/widget/TextView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v3_value:Landroid/widget/TextView;
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
+
     # Добавляем слушатель кликов
     .line 710
     new-instance v1, Lcom/rigol/scope/myfragment/FullscreenBarFragment$CommonClickListener;
@@ -409,13 +466,29 @@
     .line 720
     invoke-direct {p0, v0}, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->setupTextViewTouchDelegate(Landroid/widget/TextView;)V
 
+
     # Find TextView fsb_v4_title
     .line 730
+    # получаем флаг скрытия иконки канала
+    sget-object v0, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
+    if-eqz v0, :cond_ex_4_1
+    iget-object v0, v0, Lcom/rigol/scope/MainActivity;->axxxUtils:Lcom/rigol/axxx/axxxUtils;
+    if-eqz v0, :cond_ex_4_1
+    const/4 v1, 0x4
+    invoke-virtual {v0, v1}, Lcom/rigol/axxx/axxxUtils;->getHideChannel(I)Z
+    move-result v2
+    if-eqz v2, :cond_ex_4_1
+    const/16 v2, 0x8
+    goto :cond_ex_4_2
+    :cond_ex_4_1
+    const/4 v2, 0x0
+    :cond_ex_4_2
     sget v0, Lcom/rigol/scope/R$id;->fsb_v4_title:I
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
     move-result-object v0
     check-cast v0, Landroid/widget/TextView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v4_title:Landroid/widget/TextView;
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
 
     # Find TextView fsb_v4_coup_icon
     .line 735
@@ -424,6 +497,7 @@
     move-result-object v0
     check-cast v0, Landroid/widget/ImageView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v4_coup_icon:Landroid/widget/ImageView;
+    invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setVisibility(I)V
 
     # Find TextView fsb_v4_value
     .line 740
@@ -432,6 +506,8 @@
     move-result-object v0
     check-cast v0, Landroid/widget/TextView;
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v4_value:Landroid/widget/TextView;
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setVisibility(I)V
+
     # Добавляем слушатель кликов
     .line 750
     new-instance v1, Lcom/rigol/scope/myfragment/FullscreenBarFragment$CommonClickListener;
@@ -518,6 +594,7 @@
 
     return-object p1
 .end method
+#===============================================================================
 
 
 # Добавляем приватный метод для настройки TouchDelegate
@@ -534,6 +611,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 
 .method public onViewCreated(Landroid/view/View;Landroid/os/Bundle;)V
@@ -544,6 +622,7 @@
 
     return-void
 .end method
+#===============================================================================
 
 
 .method public static onChangedAcquireMode(I)V
@@ -568,6 +647,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedSample(J)V
     .locals 3
@@ -592,6 +672,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedHScale(J)V
     .locals 3
@@ -616,6 +697,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedAsqTrigStatus(Lcom/rigol/scope/cil/ServiceEnum$ControlStatus;)V
     .locals 3
@@ -642,6 +724,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedDepth(J)V
     .locals 3
@@ -666,6 +749,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedChanStatus(Lcom/rigol/scope/cil/ServiceEnum$Chan;Lcom/rigol/scope/cil/ServiceEnum$enChanStatus;)V
     .locals 6
@@ -747,6 +831,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedChanCoupling(II)V
     .locals 6
@@ -769,6 +854,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedChanScale(Lcom/rigol/scope/cil/ServiceEnum$Chan;J)V
     .locals 6
@@ -797,6 +883,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedChanUnit(Lcom/rigol/scope/cil/ServiceEnum$Chan;Lcom/rigol/scope/cil/ServiceEnum$Unit;)V
     .locals 6
@@ -824,7 +911,7 @@
     :cond_0
     return-void
 .end method
-
+#===============================================================================
 
 .method public static onChangedTriggerMode(Lcom/rigol/scope/cil/ServiceEnum$TriggerMode;)V
     .locals 4
@@ -851,6 +938,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerVideoPolarity(Lcom/rigol/scope/cil/ServiceEnum$TriggerPulsePolarity;)V
     .locals 4
@@ -877,6 +965,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerRuntPolarity(Lcom/rigol/scope/cil/ServiceEnum$TriggerPulsePolarity;)V
     .locals 4
@@ -903,6 +992,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerPolarity(Lcom/rigol/scope/cil/ServiceEnum$TriggerPulsePolarity;)V
     .locals 4
@@ -929,6 +1019,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerSHEvent(Lcom/rigol/scope/cil/ServiceEnum$SHEvent;)V
     .locals 4
@@ -955,6 +1046,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerEdgeSlope(Lcom/rigol/scope/cil/ServiceEnum$EdgeSlope;)V
     .locals 4
@@ -981,6 +1073,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerSlope(Lcom/rigol/scope/cil/ServiceEnum$EdgeSlope;)V
     .locals 4
@@ -1007,6 +1100,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerTimeoutSlope(Lcom/rigol/scope/cil/ServiceEnum$EdgeSlope;)V
     .locals 4
@@ -1033,6 +1127,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerOverSlope(Lcom/rigol/scope/cil/ServiceEnum$EdgeSlope;)V
     .locals 4
@@ -1059,6 +1154,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerSetupHoldSlope(Lcom/rigol/scope/cil/ServiceEnum$EdgeSlope;)V
     .locals 4
@@ -1085,6 +1181,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerEdgeSlopeA(Lcom/rigol/scope/cil/ServiceEnum$EdgeSlope;)V
     .locals 4
@@ -1111,6 +1208,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerNthSlope(Lcom/rigol/scope/cil/ServiceEnum$EdgeSlope;)V
     .locals 4
@@ -1137,6 +1235,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerEdgeSlopeB(Lcom/rigol/scope/cil/ServiceEnum$EdgeSlope;)V
     .locals 4
@@ -1163,6 +1262,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerOverEvent(Lcom/rigol/scope/cil/ServiceEnum$OverEvent;)V
     .locals 4
@@ -1189,6 +1289,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public static onChangedTriggerChannel(I)V
     .locals 4
@@ -1213,7 +1314,83 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
+
+
+
+
+.method public static chanHide(IZ)V
+    .locals 4
+
+    # Получаем сохраненный экземпляр
+    sget-object v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->instance:Lcom/rigol/scope/myfragment/FullscreenBarFragment;
+    if-eqz v0, :cond_0
+
+    # Проверяем, что элементы уже созданы
+    iget-object v1, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v1_value:Landroid/widget/TextView;
+    if-eqz v1, :cond_0
+
+    # сравниваем номер канала из p0 с 1,2,3,4
+    const/4 v1, 0x1
+    if-ne p0, v1, :cond_1
+    iget-object v1, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v1_title:Landroid/widget/TextView;
+    iget-object v2, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v1_coup_icon:Landroid/widget/ImageView;
+    iget-object v3, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v1_value:Landroid/widget/TextView;
+    goto :cond_show
+
+    :cond_1
+    const/4 v1, 0x2
+    if-ne p0, v1, :cond_2
+    iget-object v1, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v2_title:Landroid/widget/TextView;
+    iget-object v2, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v2_coup_icon:Landroid/widget/ImageView;
+    iget-object v3, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v2_value:Landroid/widget/TextView;
+    goto :cond_show
+
+    :cond_2
+    const/4 v1, 0x3
+    if-ne p0, v1, :cond_3
+    iget-object v1, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v3_title:Landroid/widget/TextView;
+    iget-object v2, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v3_coup_icon:Landroid/widget/ImageView;
+    iget-object v3, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v3_value:Landroid/widget/TextView;
+    goto :cond_show
+
+    :cond_3
+    const/4 v1, 0x4
+    if-ne p0, v1, :cond_0
+    iget-object v1, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v4_title:Landroid/widget/TextView;
+    iget-object v2, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v4_coup_icon:Landroid/widget/ImageView;
+    iget-object v3, v0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->fsb_v4_value:Landroid/widget/TextView;
+
+    :cond_show
+    if-eqz p1, :cond_show_0
+    const/16 v0, 0x8
+    goto :cond_show_1
+    :cond_show_0
+    const/4 v0, 0x0
+    :cond_show_1
+    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setVisibility(I)V
+    invoke-virtual {v2, v0}, Landroid/widget/ImageView;->setVisibility(I)V
+    invoke-virtual {v3, v0}, Landroid/widget/TextView;->setVisibility(I)V
+
+    :cond_0
+    return-void
+.end method
+#===============================================================================
+
+.method public static chanHide(Lcom/rigol/scope/cil/ServiceEnum$Chan;Z)V
+    .locals 1
+
+    # Получаем номер канала из p0
+    iget v0, p0, Lcom/rigol/scope/cil/ServiceEnum$Chan;->value1:I
+
+    # вызываем метод chanShow(int, boolean)
+    invoke-static {v0, p1}, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->chanShow(IZ)V
+
+    :cond_0
+    return-void
+.end method
+#===============================================================================
 
 
 
@@ -1264,6 +1441,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public setAsqModeValue(I)V
     .locals 2
@@ -1331,6 +1509,7 @@
         :pswitch_7
     .end packed-switch
 .end method
+#===============================================================================
 
 .method public setAsqSampleValue(J)V
     .locals 2
@@ -1354,6 +1533,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public setHScaleValue(J)V
     .locals 2
@@ -1378,6 +1558,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public setAsqDepthValue(J)V
     .locals 2
@@ -1401,6 +1582,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public setVxStatus(II)V
     .locals 4
@@ -1486,6 +1668,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public setVxCoupling(II)V
     .locals 4
@@ -1560,6 +1743,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public setVxValue(I)V
     .locals 5
@@ -1628,6 +1812,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public setTriggerIcon()V
     .locals 15
@@ -1682,6 +1867,7 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
 
 .method public setTriggerChannelName()V 
     .locals 5
@@ -1778,6 +1964,8 @@
     :cond_0
     return-void
 .end method
+#===============================================================================
+
 
 
 # /change added

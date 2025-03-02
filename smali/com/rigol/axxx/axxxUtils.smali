@@ -195,6 +195,9 @@
     aput-boolean p2, v0, p1
     invoke-virtual {p0}, Lcom/rigol/axxx/axxxUtils;->saveHideChannels()V
 
+    # скрываем канал в инфопанели
+    invoke-static {p1, p2}, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->chanShow(IZ)V
+
     return-void
 .end method
 #===============================================================================
@@ -208,6 +211,9 @@
     iget-object v0, p0, Lcom/rigol/axxx/axxxUtils;->isHideChannels:[Z
     aput-boolean p2, v0, v1
     invoke-virtual {p0}, Lcom/rigol/axxx/axxxUtils;->saveHideChannels()V
+
+    # скрываем канал в инфопанели
+    invoke-static {v1, p2}, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->chanShow(IZ)V
 
     return-void
 .end method
@@ -274,11 +280,6 @@
     # вычитаем 1, так как номера каналов начинаются с 1
     add-int/lit8 v3, v3, -0x1
 
-    # логируем
-    const-string v0, "== axxxUtils -> showChanIcon == chan number: "
-    invoke-static {v0, v3}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;I)V
-
-    
     # Получаем FragmentManager
     invoke-virtual {p0}, Lcom/rigol/axxx/axxxUtils;->getFragmentSettingsBarBinding()Lcom/rigol/scope/databinding/FragmentSettingsBarBinding;
     move-result-object v0
@@ -305,10 +306,6 @@
     aput-boolean v2, v1, v3
 
     # отображаем канал
-    # логируем
-    const-string v2, "== axxxUtils -> showChanIcon == VISIBLE"
-    invoke-static {v2}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
-
     const/4 v1, 0x0    # VISIBLE
     invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
     goto :goto_exit
@@ -324,21 +321,17 @@
     sget-object v2, Lcom/rigol/scope/cil/ServiceEnum$enChanStatus;->CHAN_OFF:Lcom/rigol/scope/cil/ServiceEnum$enChanStatus;
     invoke-virtual {v1, v2}, Lcom/rigol/scope/data/VerticalParam;->saveStatus(Lcom/rigol/scope/cil/ServiceEnum$enChanStatus;)V
     # скрываем канал
-    # логируем
-    const-string v2, "== axxxUtils -> showChanIcon == GONE"
-    invoke-static {v2}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
-
     const/16 v1, 0x8    # GONE
     invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
 
     :goto_exit
     # сохраняем массив с флагами сокрытия каналов
     invoke-virtual {p0}, Lcom/rigol/axxx/axxxUtils;->saveHideChannels()V
+    # скрываем или отображаем канал в инфопанели
+    invoke-static {v3, p2}, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->chanHide(IZ)V
     return-void
 
     :cond_exit_err
-    const-string v0, "== axxxUtils -> showChanIcon == error"
-    invoke-static {v0}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
     return-void
 
 .end method
@@ -439,7 +432,7 @@
 #===============================================================================
 
 # возвращает указатель на ServiceEnum$Chan; по номеру канала
-.method public static getAppVersionNameetChanByNum(I)Lcom/rigol/scope/cil/ServiceEnum$Chan;
+.method public static getChanByNum(I)Lcom/rigol/scope/cil/ServiceEnum$Chan;
     .locals 4
 
     # получаем объект VerticalParam по номеру канала
@@ -479,6 +472,24 @@
     check-cast v0, Lcom/rigol/scope/data/HorizontalParam;
 
     # возвращаем указатель на HorizontalParam
+    return-object v0
+.end method
+#===============================================================================
+
+# возвращает указатель на FullscreenBarFragment
+.method public static getFullscreenBarFragment()Lcom/rigol/scope/myfragment/FullscreenBarFragment;
+    .locals 1
+
+    sget-object v0, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
+    if-eqz v0, :cond_exit_null
+    invoke-virtual {v0}, Lcom/rigol/scope/MainActivity;->getBinding()Lcom/rigol/scope/databinding/ActivityMainBinding;
+    move-result-object v0
+    iget-object v0, v0, Lcom/rigol/scope/databinding/ActivityMainBindingImpl;->fullscreenBar:Landroidx/fragment/app/FragmentContainerView;
+
+    :cond_exit_null
+    const/4 v0, 0x0
+
+    # возвращаем указатель на FullscreenBarFragment
     return-object v0
 .end method
 #===============================================================================
