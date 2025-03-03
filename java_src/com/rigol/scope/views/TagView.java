@@ -830,19 +830,23 @@ public class TagView extends OrientationView {
     }
 
     private final void turnLeft(Canvas canvas, Path path, Paint paint, int i, int i2, int i3, int i4) {
-        int i5 = i4 >> 1;
-        float f = i;
-        float f2 = i2;
-        path.moveTo(f, f2);
-        int i6 = i + i5;
-        float f3 = i6;
-        int i7 = i2 - i5;
-        float f4 = i7;
-        float f5 = i + i3;
-        float[] fArr = {f5, f4};
-        float f6 = i2 + i5;
+        // i = 987
+        // i2 = 40
+        // i3 = 20
+        // i4 = 20
+        int i5 = i4 >> 1; // 20/2= 10
+        float f = i;    // 987
+        float f2 = i2;  // 40
+        path.moveTo(f, f2); // 987, 40
+        int i6 = i + i5; // 987 + 10 = 997
+        float f3 = i6; // 997
+        int i7 = i2 - i5; // 40 - 10 = 30
+        float f4 = i7; // 30
+        float f5 = i + i3; // 987 + 20 = 1007
+        float[] fArr = {f5, f4};    // 1007, 30
+        float f6 = i2 + i5; // 40 + 10 = 50
         drawPolygon(canvas, path, paint, new float[][]{new float[]{f3, f4}, fArr, new float[]{f5, f6}, new float[]{f3, f6}, new float[]{f, f2}});
-        drawText(canvas, i6, i7, i3 - i5, i4);
+        drawText(canvas, i6, i7, i3 - i5, i4); // 997, 30, 10, 20
     }
 
     private final void drawText(Canvas canvas, int i, int i2, int i3, int i4) {

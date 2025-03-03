@@ -21,10 +21,6 @@
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    # логируем
-    const-string v2, "== axxxUtils -> <init> == "
-    invoke-static {v2}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
-
     const/4 v0, 0x1
     iput-boolean v0, p0, Lcom/rigol/axxx/axxxUtils;->isShowInfoPanel:Z
     const/4 v0, 0x0
@@ -228,9 +224,6 @@
     const-string v1, "hide_channels_array"
     invoke-virtual {v0, v1}, Lcom/blankj/utilcode/util/SPUtils;->getString(Ljava/lang/String;)Ljava/lang/String;
     move-result-object v0
-    # Логируем
-    const-string v1, "== axxxUtils -> readHideChannels == : "
-    invoke-static {v1, v0}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;Ljava/lang/String;)V
     # десериализуем строку в массив
     new-instance v1, Lcom/google/gson/Gson;
     invoke-direct {v1}, Lcom/google/gson/Gson;-><init>()V

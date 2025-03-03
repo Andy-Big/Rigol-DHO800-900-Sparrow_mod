@@ -99,6 +99,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- Inform: Иконка полноэкранного режима -->
     <ImageView android:id="@id/fullscreenwave_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -106,9 +107,9 @@
         android:tag="binding_5"
         app:layout_constraintTop_toTopOf="@id/waveform"
         app:layout_constraintStart_toStartOf="@id/waveform"
-        android:layout_marginLeft="-5.0dip"
-        android:layout_marginTop="22.0dip" />
-
+        android:layout_marginLeft="-10.0dip"
+        android:layout_marginTop="17.0dip" />
+    <!-- /Inform -->
 
 
     <!-- Inform: Фрагмент для отображения настроек каналов и дискретизации в полноэкранном режиме -->
@@ -125,7 +126,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/waveform" />
-<!--        android:name="com.rigol.scope.FullscreenBarFragment" -->
+    <!-- /Inform -->
 
 
 

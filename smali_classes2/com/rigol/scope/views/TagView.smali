@@ -3821,6 +3821,17 @@
 .method private final turnLeft(Landroid/graphics/Canvas;Landroid/graphics/Path;Landroid/graphics/Paint;IIII)V
     .locals 15
 
+# change added
+    # Inform: сдвигаем отрисовку триггерного указателя, указывающего влево, чтобы он не залазил под значок полноэкранного режима
+    # если это триггерный указатель, то сдвигаем отрисовку на 33 пикселя вправо (50 пикселей минус половина ширины указателя)
+    instance-of v2, p0, Lcom/rigol/scope/views/TriggerPointTag;
+    if-eqz v2, :cond_01
+    move/from16 v2, p4
+    add-int/lit8 v2, v2, 0x1e
+    move/from16 p4, v2
+# /change
+
+    :cond_01
     move-object/from16 v0, p2
 
     move/from16 v1, p4
@@ -4518,6 +4529,16 @@
     .line 410
     aput v4, v3, v1
 
+# change added
+    # Inform: сдвигаем крайнюю левую границу триггерного указателя вправо на 50 пикселей, чтобы указатель не залазил под значок полноэкранного режима
+    instance-of v5, p0, Lcom/rigol/scope/views/TriggerPointTag;
+    if-eqz v5, :cond_01
+    const/16 v5, 0x2d
+    aput v5, v3, v4
+
+    :cond_01
+# /change added
+
     .line 412
     invoke-virtual {p0}, Lcom/rigol/scope/views/TagView;->getParent()Landroid/view/ViewParent;
 
@@ -4711,7 +4732,7 @@
 .end method
 
 .method protected onDraw(Landroid/graphics/Canvas;)V
-    .locals 2
+    .locals 3
 
     const-string v0, "canvas"
 
@@ -5111,7 +5132,7 @@
 .end method
 
 .method public setPosition(I)V
-    .locals 0
+    .locals 1
 
     .line 73
     iput p1, p0, Lcom/rigol/scope/views/TagView;->position:I
