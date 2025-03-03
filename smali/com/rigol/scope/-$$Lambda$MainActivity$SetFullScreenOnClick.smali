@@ -51,18 +51,9 @@
     # проверка на включен ли режим разворота на весь экран
     invoke-virtual {v2}, Lcom/rigol/axxx/axxxUtils;->getFullScreen()Z
     move-result v0
-
-    # логируем
-    const-string v4, "=== SetFullScreenOnClick == isFullScreen: "
-    invoke-static {v4, v0}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;Z)V
-    
     if-nez v0, :cond_close
     
     # не развернуто, разворачиваем
-    # логируем
-    const-string v4, "=== SetFullScreenOnClick == разворачиваем"
-    invoke-static {v4}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
-    
     const/4 v0, 0x1
     invoke-virtual {v2, v0}, Lcom/rigol/axxx/axxxUtils;->setFullScreen(Z)V
     # скрываем верхнюю и нижнюю панели
@@ -90,10 +81,6 @@
 
 
     # развернуто, сворачиваем
-    # логируем
-    const-string v4, "=== SetFullScreenOnClick == сворачиваем"
-    invoke-static {v4}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
-    
     :cond_close
     const/4 v0, 0x0
     invoke-virtual {v2, v0}, Lcom/rigol/axxx/axxxUtils;->setFullScreen(Z)V

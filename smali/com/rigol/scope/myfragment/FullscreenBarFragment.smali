@@ -86,15 +86,11 @@
 
     iput-object v0, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->triggerViewModel:Lcom/rigol/scope/viewmodels/TriggerViewModel;
     if-nez v0, :cond_1
-    const-string v0, "== FullscreenBarFragment -> onCreate == triggerViewModel: null"
-    invoke-static {v0}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
     goto :cond_0
 
     :cond_1
     iget-object v1, p0, Lcom/rigol/scope/myfragment/FullscreenBarFragment;->triggerParam:Lcom/rigol/scope/data/TriggerParam;
     if-eqz v1, :cond_2
-    const-string v1, "== FullscreenBarFragment -> onCreate == triggerParam: not null"
-    invoke-static {v1}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
     goto :cond_0
 
     :cond_2
@@ -105,8 +101,6 @@
     invoke-virtual {v0}, Landroidx/lifecycle/LiveData;->getValue()Ljava/lang/Object;
     move-result-object v0
     if-nez v0, :cond_3
-    const-string v0, "== FullscreenBarFragment -> onCreate == LiveData->getValue(): null"
-    invoke-static {v0}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
     goto :cond_0
 
     :cond_3

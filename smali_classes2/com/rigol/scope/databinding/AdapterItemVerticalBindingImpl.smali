@@ -1827,13 +1827,6 @@
     invoke-virtual {v4, v6}, Landroid/widget/TextView;->setTextColor(I)V
     
     # Inform: скрытие или отображение иконок каналов в нижней панели SettingsBarFragment
-    # Логируем
-    const-string v4, "== AdapterItemVerticalBindingImpl -> setVisibility == chan: "
-    iget-object v6, v1, Lcom/rigol/scope/databinding/AdapterItemVerticalBindingImpl;->mParam:Lcom/rigol/scope/data/VerticalParam;
-    invoke-virtual {v6}, Lcom/rigol/scope/data/VerticalParam;->getTitle()Ljava/lang/String;
-    move-result-object v8
-    invoke-static {v4, v8}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;Ljava/lang/String;)V
-
     # получаем флаг скрытия иконки канала
     sget-object v4, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
     if-eqz v4, :cond_001
@@ -1847,8 +1840,6 @@
     if-eqz v4, :cond_001
     # если флаг скрытия иконки канала установлен, то изменяем значение visibility на GONE
     const/16 v5, 0x8
-    const-string v4, "== AdapterItemVerticalBindingImpl -> setVisibility == hidden"
-    invoke-static {v4}, Lcom/rigol/axxx/axxxUtils;->axxxLogOut(Ljava/lang/String;)V
     :cond_001
 # /change added
 
