@@ -79,7 +79,7 @@ Telegram: [@Rigol DHO800/DHO900 mod](https://t.me/rigol_dho800_mod)
 
 Осциллограф должен быть подключен к одной сети с компьютером - кабелем или через Wi-Fi.  
 
-Необходимо скачать архив нужной версии из [раздела релизов](/releases). Распакуйте эти файлы в каталог с ADB (или в любой другой если вы добавили ADB в системные переменные среды). Запустите в этой папке командную строку (открыть эту папку в проводнике и в его адресной строке ввести команду cmd) и дальше вводите в командной строке показанные ниже команды. Вводить нужно только то, что выделено ***жирным курсивом***, можно прямо копировать указанные команды и вставлять их в командную строку.
+Необходимо скачать архив нужной версии из [раздела релизов](https://github.com/Andy-Big/Rigol-DHO800-900-Sparrow_mod/releases). Распакуйте эти файлы в каталог с ADB (или в любой другой если вы добавили ADB в системные переменные среды). Запустите в этой папке командную строку (открыть эту папку в проводнике и в его адресной строке ввести команду cmd) и дальше вводите в командной строке показанные ниже команды. Вводить нужно только то, что выделено ***жирным курсивом***, можно прямо копировать указанные команды и вставлять их в командную строку.
 
 ## Установка патча системы
 
@@ -352,7 +352,7 @@ For installing both the patch and any version of the modified application, you'l
 
 The oscilloscope must be connected to the same network as the computer - via cable or Wi-Fi.
 
-You need to download the archive of the needed version from the [releases section](/releases). Extract these files to the ADB directory (or any other if you've added ADB to system environment variables). Launch command prompt in this folder (open this folder in explorer and enter cmd in its address bar) and then enter the commands shown below in the command prompt. Enter only what's highlighted in ***bold italic***, you can directly copy the specified commands and paste them into the command prompt.
+You need to download the archive of the needed version from the [releases section](https://github.com/Andy-Big/Rigol-DHO800-900-Sparrow_mod/releases). Extract these files to the ADB directory (or any other if you've added ADB to system environment variables). Launch command prompt in this folder (open this folder in explorer and enter cmd in its address bar) and then enter the commands shown below in the command prompt. Enter only what's highlighted in ***bold italic***, you can directly copy the specified commands and paste them into the command prompt.
 
 ## System Patch Installation
 
