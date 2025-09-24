@@ -1825,7 +1825,7 @@
     iget-object v4, v1, Lcom/rigol/scope/databinding/AdapterItemVerticalBindingImpl;->probe_atten:Landroid/widget/TextView;
     move/16 v6, v48
     invoke-virtual {v4, v6}, Landroid/widget/TextView;->setTextColor(I)V
-    
+
     # Inform: скрытие или отображение иконок каналов в нижней панели SettingsBarFragment
     # получаем флаг скрытия иконки канала
     sget-object v4, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
@@ -1833,6 +1833,7 @@
     iget-object v4, v4, Lcom/rigol/scope/MainActivity;->axxxUtils:Lcom/rigol/axxx/axxxUtils;
     if-eqz v4, :cond_001
     # получаем канал
+    iget-object v6, v1, Lcom/rigol/scope/databinding/AdapterItemVerticalBindingImpl;->mParam:Lcom/rigol/scope/data/VerticalParam;
     invoke-virtual {v6}, Lcom/rigol/scope/data/VerticalParam;->getChan()Lcom/rigol/scope/cil/ServiceEnum$Chan;
     move-result-object v6
     invoke-virtual {v4, v6}, Lcom/rigol/axxx/axxxUtils;->getHideChannel(Lcom/rigol/scope/cil/ServiceEnum$Chan;)Z
@@ -1980,7 +1981,7 @@
     # build new string
     new-instance v0, Ljava/lang/StringBuilder;
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-    # add probe attenuate value string to new string 
+    # add probe attenuate value string to new string
     move-object/16 v4, v50
     invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
     # add 'x' symbol
