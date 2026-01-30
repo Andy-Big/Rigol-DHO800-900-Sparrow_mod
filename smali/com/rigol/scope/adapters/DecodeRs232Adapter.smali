@@ -317,7 +317,7 @@
     return v0
 .end method
 
-.method public synthetic lambda$onBindViewHolder$0$DecodeRs232Adapter(Lcom/rigol/scope/views/keyboard/KeyboardPopupView;)V
+.method public synthetic lambda$null$0$DecodeRs232Adapter(Lcom/rigol/scope/views/keyboard/KeyboardPopupView;)V
     .locals 0
 
     .line 161
@@ -326,7 +326,7 @@
     return-void
 .end method
 
-.method public synthetic lambda$onBindViewHolder$1$DecodeRs232Adapter(ILcom/rigol/scope/data/MappingObject;)V
+.method public synthetic lambda$null$1$DecodeRs232Adapter(ILcom/rigol/scope/data/MappingObject;)V
     .locals 1
 
     .line 163
@@ -450,13 +450,13 @@
 
     iget-object v9, p0, Lcom/rigol/scope/adapters/DecodeRs232Adapter;->keyboardPopupView:Lcom/rigol/scope/views/keyboard/KeyboardPopupView;
 
-    new-instance v10, Lcom/rigol/scope/adapters/-$$Lambda$DecodeRs232Adapter$LZnxqcnvE70ckaWqSb9uK7UUdyI;
+    new-instance v10, Lcom/rigol/scope/adapters/-$$Lambda$DecodeRs232Adapter$LDitcCcEe7xU4xduDYRIyr6BMOQ;
 
-    invoke-direct {v10, p0}, Lcom/rigol/scope/adapters/-$$Lambda$DecodeRs232Adapter$LZnxqcnvE70ckaWqSb9uK7UUdyI;-><init>(Lcom/rigol/scope/adapters/DecodeRs232Adapter;)V
+    invoke-direct {v10, p0}, Lcom/rigol/scope/adapters/-$$Lambda$DecodeRs232Adapter$LDitcCcEe7xU4xduDYRIyr6BMOQ;-><init>(Lcom/rigol/scope/adapters/DecodeRs232Adapter;)V
 
-    new-instance v11, Lcom/rigol/scope/adapters/-$$Lambda$DecodeRs232Adapter$62zkPevvP_hZjPEq9Zje8QjUeHs;
+    new-instance v11, Lcom/rigol/scope/adapters/-$$Lambda$DecodeRs232Adapter$vqQMhAO0wVDJTRO6dtgZyviyN1U;
 
-    invoke-direct {v11, p0}, Lcom/rigol/scope/adapters/-$$Lambda$DecodeRs232Adapter$62zkPevvP_hZjPEq9Zje8QjUeHs;-><init>(Lcom/rigol/scope/adapters/DecodeRs232Adapter;)V
+    invoke-direct {v11, p0}, Lcom/rigol/scope/adapters/-$$Lambda$DecodeRs232Adapter$vqQMhAO0wVDJTRO6dtgZyviyN1U;-><init>(Lcom/rigol/scope/adapters/DecodeRs232Adapter;)V
 
     move-object v3, p1
 

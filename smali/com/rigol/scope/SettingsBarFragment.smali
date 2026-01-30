@@ -232,7 +232,6 @@
     return v0
 .end method
 
-# Inform: Открытие главного меню
 .method static synthetic lambda$onCreateView$4(Landroid/view/View;)V
     .locals 1
 
@@ -383,7 +382,7 @@
 .method private loadOtherFunInfo()V
     .locals 8
 
-    const v0, 0x7f030181
+    const v0, 0x7f030183
 
     .line 838
     invoke-static {v0}, Lcom/rigol/scope/utilities/ViewUtil;->getList(I)Ljava/util/List;
@@ -669,7 +668,7 @@
 .method private showLa()V
     .locals 5
 
-    const v0, 0x7f030152
+    const v0, 0x7f030153
 
     .line 674
     invoke-static {v0}, Lcom/rigol/scope/utilities/ViewUtil;->getList(I)Ljava/util/List;
@@ -1091,8 +1090,6 @@
 
     move-result-object v0
 
-    check-cast v0, Ljava/util/ArrayList;
-
     invoke-static {v0}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
@@ -1111,8 +1108,6 @@
     invoke-virtual {v0}, Landroidx/lifecycle/LiveData;->getValue()Ljava/lang/Object;
 
     move-result-object v0
-
-    check-cast v0, Lcom/rigol/scope/data/HorizontalParam;
 
     invoke-static {v0}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
 
@@ -1193,7 +1188,7 @@
 
     move-result v0
 
-    const v1, 0x7f0a06a3
+    const v1, 0x7f0a06ad
 
     if-eq v0, v1, :cond_0
 
@@ -1347,7 +1342,7 @@
 
     move-result-object p1
 
-    const v0, 0x7f100764
+    const v0, 0x7f10076a
 
     invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
