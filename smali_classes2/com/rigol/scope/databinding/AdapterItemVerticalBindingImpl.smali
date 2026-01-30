@@ -1827,6 +1827,7 @@
     invoke-virtual {v4, v6}, Landroid/widget/TextView;->setTextColor(I)V
 
     # Inform: скрытие или отображение иконок каналов в нижней панели SettingsBarFragment
+    iget-object v6, v1, Lcom/rigol/scope/databinding/AdapterItemVerticalBindingImpl;->mParam:Lcom/rigol/scope/data/VerticalParam;
     # получаем флаг скрытия иконки канала
     sget-object v4, Lcom/rigol/scope/MainActivity;->sInstance:Lcom/rigol/scope/MainActivity;
     if-eqz v4, :cond_001
