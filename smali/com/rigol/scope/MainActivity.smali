@@ -721,7 +721,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f0a0690
+    const v1, 0x7f0a069a
 
     invoke-virtual {v0, v1}, Landroidx/fragment/app/FragmentManager;->findFragmentById(I)Landroidx/fragment/app/Fragment;
 
@@ -751,7 +751,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f0a07ac
+    const v1, 0x7f0a07b8
 
     invoke-virtual {v0, v1}, Landroidx/fragment/app/FragmentManager;->findFragmentById(I)Landroidx/fragment/app/Fragment;
 
@@ -781,7 +781,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f0a07fe
+    const v1, 0x7f0a080a
 
     invoke-virtual {v0, v1}, Landroidx/fragment/app/FragmentManager;->findFragmentById(I)Landroidx/fragment/app/Fragment;
 
@@ -811,7 +811,7 @@
 
     move-result-object v0
 
-    const v1, 0x7f0a0b20
+    const v1, 0x7f0a0b2c
 
     invoke-virtual {v0, v1}, Landroidx/fragment/app/FragmentManager;->findFragmentById(I)Landroidx/fragment/app/Fragment;
 
@@ -1304,7 +1304,6 @@
     return-void
 .end method
 
-
 .method public synthetic lambda$onCreate$9$MainActivity(Landroid/view/View;)V
     .locals 2
 
@@ -1468,7 +1467,7 @@
 
     const/16 v4, 0xb
 
-    const-string v5, "00.01.04.00.02"
+    const-string v5, "00.01.05.00.01"
 
     invoke-virtual {v0, v4, v3, v5}, Lcom/rigol/scope/cil/API;->UI_PostStr(IILjava/lang/String;)I
 
@@ -2066,10 +2065,6 @@
     invoke-direct {v3, v1}, Lcom/rigol/scope/-$$Lambda$MainActivity$rjGDWwom0l-jRn61OqQ31Tbizg0;-><init>(Lcom/rigol/scope/MainActivity;)V
 
     invoke-virtual {v0, v1, v3}, Landroidx/lifecycle/LiveData;->observe(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Observer;)V
-
-
-
-
 
     .line 564
     iget-object v0, v1, Lcom/rigol/scope/MainActivity;->binding:Lcom/rigol/scope/databinding/ActivityMainBinding;

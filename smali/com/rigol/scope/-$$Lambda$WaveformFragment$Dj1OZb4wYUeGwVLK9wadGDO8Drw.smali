@@ -1,4 +1,4 @@
-.class public final synthetic Lcom/rigol/scope/-$$Lambda$WaveformFragment$fyNPfz9C6Yl_aNgS8_oWb4qLBDo;
+.class public final synthetic Lcom/rigol/scope/-$$Lambda$WaveformFragment$Dj1OZb4wYUeGwVLK9wadGDO8Drw;
 .super Ljava/lang/Object;
 .source "lambda"
 
@@ -16,7 +16,7 @@
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p1, p0, Lcom/rigol/scope/-$$Lambda$WaveformFragment$fyNPfz9C6Yl_aNgS8_oWb4qLBDo;->f$0:Lcom/rigol/scope/WaveformFragment;
+    iput-object p1, p0, Lcom/rigol/scope/-$$Lambda$WaveformFragment$Dj1OZb4wYUeGwVLK9wadGDO8Drw;->f$0:Lcom/rigol/scope/WaveformFragment;
 
     return-void
 .end method
@@ -26,11 +26,11 @@
 .method public final onChanged(Ljava/lang/Object;)V
     .locals 1
 
-    iget-object v0, p0, Lcom/rigol/scope/-$$Lambda$WaveformFragment$fyNPfz9C6Yl_aNgS8_oWb4qLBDo;->f$0:Lcom/rigol/scope/WaveformFragment;
+    iget-object v0, p0, Lcom/rigol/scope/-$$Lambda$WaveformFragment$Dj1OZb4wYUeGwVLK9wadGDO8Drw;->f$0:Lcom/rigol/scope/WaveformFragment;
 
     check-cast p1, Landroid/view/KeyEvent;
 
-    invoke-virtual {v0, p1}, Lcom/rigol/scope/WaveformFragment;->lambda$onViewCreated$16$WaveformFragment(Landroid/view/KeyEvent;)V
+    invoke-virtual {v0, p1}, Lcom/rigol/scope/WaveformFragment;->lambda$onViewCreated$17$WaveformFragment(Landroid/view/KeyEvent;)V
 
     return-void
 .end method

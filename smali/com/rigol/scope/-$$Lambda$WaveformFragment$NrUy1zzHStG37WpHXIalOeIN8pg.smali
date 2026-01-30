@@ -1,4 +1,4 @@
-.class public final synthetic Lcom/rigol/scope/-$$Lambda$WaveformFragment$N7YBmqjMD_TinK5F1qWfVZ0I9aU;
+.class public final synthetic Lcom/rigol/scope/-$$Lambda$WaveformFragment$NrUy1zzHStG37WpHXIalOeIN8pg;
 .super Ljava/lang/Object;
 .source "lambda"
 
@@ -16,7 +16,7 @@
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p1, p0, Lcom/rigol/scope/-$$Lambda$WaveformFragment$N7YBmqjMD_TinK5F1qWfVZ0I9aU;->f$0:Lcom/rigol/scope/WaveformFragment;
+    iput-object p1, p0, Lcom/rigol/scope/-$$Lambda$WaveformFragment$NrUy1zzHStG37WpHXIalOeIN8pg;->f$0:Lcom/rigol/scope/WaveformFragment;
 
     return-void
 .end method
@@ -26,9 +26,9 @@
 .method public final onChanged(Ljava/lang/Object;)V
     .locals 1
 
-    iget-object v0, p0, Lcom/rigol/scope/-$$Lambda$WaveformFragment$N7YBmqjMD_TinK5F1qWfVZ0I9aU;->f$0:Lcom/rigol/scope/WaveformFragment;
+    iget-object v0, p0, Lcom/rigol/scope/-$$Lambda$WaveformFragment$NrUy1zzHStG37WpHXIalOeIN8pg;->f$0:Lcom/rigol/scope/WaveformFragment;
 
-    invoke-virtual {v0, p1}, Lcom/rigol/scope/WaveformFragment;->lambda$onViewCreated$17$WaveformFragment(Ljava/lang/Object;)V
+    invoke-virtual {v0, p1}, Lcom/rigol/scope/WaveformFragment;->lambda$onViewCreated$32$WaveformFragment(Ljava/lang/Object;)V
 
     return-void
 .end method

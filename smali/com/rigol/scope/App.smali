@@ -244,5 +244,3 @@
 
     return-void
 .end method
-
-
